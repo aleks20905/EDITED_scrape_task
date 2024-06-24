@@ -10,16 +10,41 @@ driver = webdriver.Chrome(service=service)
 driver.get('https://www.marksandspencer.com/bg/easy-iron-geometric-print-shirt/p/P60639302.html')
 
 
-mainWraper = driver.find_elements(By.CLASS_NAME, "pdp_call_detail")
 
-elements = []
-for i in range(len(mainWraper)):
-    elements.append(mainWraper[i].text)
+name = driver.find_element(By.CSS_SELECTOR, 'h1.product-name').text  # Name
 
-print(elements)
+price = None # Price
 
+colour = None # colour
+
+sizes = None # sizes
+
+reviews_count =  None # reviews
+
+reviews_score = None # score
+
+
+product_info = {
+    "name": name,
+    "price": price,
+    "colour": colour,
+    "size": sizes,
+    "reviews_count": reviews_count,
+    "reviews_score": reviews_score
+}
+print(product_info)
 
 driver.quit()
+
+
+
+# mainWraper = driver.find_elements(By.CLASS_NAME, "pdp_call_detail")
+
+# elements = []
+# for i in range(len(mainWraper)):
+#     elements.append(mainWraper[i].text)
+
+# print(elements)
 
 # ['29 Reviews\n
 # BGN 115.00\n
