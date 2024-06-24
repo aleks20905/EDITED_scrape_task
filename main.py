@@ -13,15 +13,15 @@ driver.get('https://www.marksandspencer.com/bg/easy-iron-geometric-print-shirt/p
 
 name = driver.find_element(By.CSS_SELECTOR, 'h1.product-name').text  # Name
 
-price = None # Price
+price = (driver.find_element(By.CSS_SELECTOR, 'span.list-pricecolour').text.strip('BGN ')) # Price
 
-colour = None # colour
+colour = driver.find_element(By.CSS_SELECTOR, 'b').text # colour
 
 sizes = None # sizes
 
-reviews_count =  None # reviews
+reviews_count = int(driver.find_element(By.CSS_SELECTOR, 'span.review-summary-count').text.strip('Reviews'))  # reviews
 
-reviews_score = None # score
+reviews_score = float(driver.find_element(By.CSS_SELECTOR, 'span.review-summary__rating').text)  # score
 
 
 product_info = {
