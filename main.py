@@ -17,7 +17,9 @@ price = (driver.find_element(By.CSS_SELECTOR, 'span.list-pricecolour').text.stri
 
 colour = driver.find_element(By.CSS_SELECTOR, 'b').text # colour
 
-sizes = None # sizes
+webSizes = driver.find_elements(By.XPATH, "//select[@id='plp-select']/option") # sizes
+# sizes = [opt.text for opt in webSizes]
+sizes = [opt.text.strip('Out of Stock') for opt in webSizes]
 
 reviews_count = int(driver.find_element(By.CSS_SELECTOR, 'span.review-summary-count').text.strip('Reviews'))  # reviews
 
@@ -44,7 +46,7 @@ driver.quit()
 # for i in range(len(mainWraper)):
 #     elements.append(mainWraper[i].text)
 
-# print(elements)
+# print(elements) >>
 
 # ['29 Reviews\n
 # BGN 115.00\n
