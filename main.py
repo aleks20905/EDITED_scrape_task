@@ -19,7 +19,8 @@ colour = driver.find_element(By.CSS_SELECTOR, 'b').text # colour
 
 webSizes = driver.find_elements(By.XPATH, "//select[@id='plp-select']/option") # sizes
 # sizes = [opt.text for opt in webSizes]
-sizes = [opt.text.strip('Out of Stock') for opt in webSizes]
+sizes = [opt.text.replace(" Out of Stock", "") for opt in webSizes]
+sizes.pop(0)
 
 reviews_count = int(driver.find_element(By.CSS_SELECTOR, 'span.review-summary-count').text.strip('Reviews'))  # reviews
 
@@ -34,7 +35,10 @@ product_info = {
     "reviews_count": reviews_count,
     "reviews_score": reviews_score
 }
-print(product_info)
+
+# print(product_info)
+for product in product_info:
+    print(f"{product}: {product_info[product]}")
 
 driver.quit()
 
