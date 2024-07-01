@@ -10,11 +10,11 @@ class MarksandspiderSpider(scrapy.Spider):
         
         name = response.css('h1.product-name ::text').get().strip('\n') 
         
-        price = 0 
+        price = float(response.css('span.list-pricecolour span.value ::attr(content)').get()) 
         
-        color = 0 
+        color = response.css('div.colour-picker ::attr(data-colorname)').get() 
         
-        websizes = 0
+        sizes = response.css("select.custom-select option::attr(data-attr-value)").getall()
         
         review_count = 0
         
@@ -24,7 +24,7 @@ class MarksandspiderSpider(scrapy.Spider):
             'name':name,
             'price': price,
             'color': color,
-            'websizes': websizes,
+            'websizes': sizes,
             'review_count': review_count,
             'review_value': review_value,
         } 
