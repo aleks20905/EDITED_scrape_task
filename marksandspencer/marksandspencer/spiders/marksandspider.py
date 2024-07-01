@@ -1,4 +1,5 @@
 import scrapy
+import json
 
 
 class MarksandspiderSpider(scrapy.Spider):
@@ -16,9 +17,14 @@ class MarksandspiderSpider(scrapy.Spider):
         
         sizes = response.css("select.custom-select option::attr(data-attr-value)").getall()
         
-        review_count = 0
-        
-        review_value = 0
+        json_contents = response.xpath('//script[@type="application/ld+json"]/text()').getall()   
+        for content in json_contents:
+            json_data = json.loads(content)
+            
+            if "AggregateRating" in json_data:
+                review_count = int(json_data["AggregateRating"].get("reviewCount"))
+                review_value = float(json_data["AggregateRating"].get("ratingValue"))
+                break
         
         yield{
             'name':name,

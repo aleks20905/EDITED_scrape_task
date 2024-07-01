@@ -1,3 +1,10 @@
 [
-{"name": "Easy Iron Geometric Print Shirt", "price": 0, "color": 0, "websizes": 0, "review_count": 0, "review_value": 0}
+{
+    "name": "Easy Iron Geometric Print Shirt", 
+    "price": 115.0, 
+    "color": "DARK NAVY", 
+    "websizes": ["M-REG", "L-REG", "X-REG", "XXL-REG", "XXXL-REG", "XXXXL-REG"], 
+    "review_count": 31, 
+    "review_value": 4.2
+}
 ]
